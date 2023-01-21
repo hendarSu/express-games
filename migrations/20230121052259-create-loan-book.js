@@ -11,7 +11,8 @@ module.exports = {
       },
       member_id: {
         type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
+        allowNull: false,
+        onDelete: 'CASCADE', // untuk kasih konfig apabila data member dihapus maka data loan dihapus
         references: {
           model: "Members",
           key: 'id'
@@ -19,6 +20,7 @@ module.exports = {
       },
       book_id: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         references: {
           model: "Books",
           key: 'id'

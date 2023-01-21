@@ -3,12 +3,20 @@ const { Book, Member, LoanBook } = require("../models");
 const api = express.Router();
 
 // Section Books
-api.get('/v1/books', async (req, res) => {
+api.get('/v1/books', async (req, res) => { // localhost:3000/api/v1/books
     const books = await Book.findAll();
-    res.status(200).json({
-        status: "success",
-        data: books
-    })
+    try {
+        res.status(200).json({
+            status: "success",
+            data: books
+        })
+    } catch (error) {
+        res.status(400).json({
+            status: "failed",
+            message: err.message,
+            stack: err
+        })
+    }
 });
 
 api.post('/v1/books', async (req, res) => {
