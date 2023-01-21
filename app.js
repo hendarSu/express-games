@@ -13,7 +13,7 @@ app.get("/", (req, res) => {
     res.send("Server up!");
 })
 
-app.use("/", router);
+app.use("/", router); // localhost:3000/
 
 app.listen(port, () => {
     console.log(`Server up on server ${port}!`);
