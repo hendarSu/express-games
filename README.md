@@ -1,4 +1,4 @@
-# library-expressjs
+# Sistem Perpustakaan
 example crud for library system use expressjs and orm sequelize
 
 For Dokumentation : 
