@@ -3,9 +3,9 @@ const LocalStrategy = require('passport-local').Strategy;
 const bcrypt = require('bcrypt');
 
 // call model
-const { User } = require("../models");
+const { User, Role } = require("../models");
 
-const autheticate = (email, password, done) => {
+const authenticate = (email, password, done) => {
     User.findOne({ where: { email: email } }).then(user => {
         if (!user) {
             return done(null, false, { message: 'Incorrect email or password.' });
@@ -24,14 +24,21 @@ const autheticate = (email, password, done) => {
 passport.use(new LocalStrategy({
     usernameField: 'email',
     passwordField: 'password'
-}, autheticate));
+}, authenticate));
 
 passport.serializeUser((user, done) => {
     done(null, user.id);
 });
 
 passport.deserializeUser((id, done) => {
-    User.findByPk(id).then(user => {
+    User.findByPk(id, {
+        include: [
+            {
+                model: Role,
+                as: 'role'
+            }
+        ]
+    }).then(user => {
         done(null, user);
     });
 });

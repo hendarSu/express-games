@@ -4,7 +4,7 @@ const router = require("./routes/router");
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('express-flash');
-const passport = require("passport");
+const passport = require("./libs/passport");
 
 const app = express();
 const port = 3000;
@@ -24,10 +24,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.get("/", (req, res) => {
-    res.send("Server up!");
-})
-
+// view engine setup
 app.set('view engine', 'ejs');
 
 app.use("/", router); // localhost:3000/
