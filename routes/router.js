@@ -8,8 +8,9 @@ router.get("/", (req, res, next) => {
     res.render("home", { page: { title: "Halaman beranda!" }, user: req.isAuthenticated ? req.user: null })
 });
 
-router.use("/api", api); // localhost:3000/api
 router.use("/", auth);
 router.use("/", home);
+
+router.use("/api", api); // localhost:3000/api
 
 module.exports = router;
