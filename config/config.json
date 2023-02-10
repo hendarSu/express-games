@@ -2,7 +2,7 @@
   "development": {
     "username": "postgres",
     "password": "root",
-    "database": "db_libary",
+    "database": "db_libary_new",
     "host": "127.0.0.1",
     "port": "5432",
     "dialect": "postgres"
