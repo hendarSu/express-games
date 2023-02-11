@@ -1,0 +1,5 @@
+module.exports = {
+    waiting : "WAITING",
+    running: "RUNNING",
+    completed : "COMPLETED"
+}

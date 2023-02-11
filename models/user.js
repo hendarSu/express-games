@@ -4,8 +4,9 @@ const {
 } = require('sequelize');
 
 const bcrypt = require('bcrypt');
-const SECRETTOKEN = "BINAR2023WV28";
+
 const jwt = require("jsonwebtoken");
+const SECRETTOKEN = require('../libs/secret');
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
