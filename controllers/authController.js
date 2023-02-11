@@ -34,5 +34,16 @@ module.exports = {
         } catch (error) {
             res.status(400).json(base_response(null, "failed", error));
         }
+    },
+    loginToken: async (req, res, next) => {
+        const { email, password } = req.body;   
+        User.authenticateToken({ email, password }).then(async (user) => {
+            const data = {
+                id: user.id,
+                username: user.email,
+                accessToken: await User.generateTokenV2({ id: user.id, email: user.email })
+            }
+            res.status(200).json(base_response(data, "success", "Login Berhasil!"));
+        })
     }
 }

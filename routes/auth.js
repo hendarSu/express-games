@@ -7,4 +7,7 @@ auth.post('/login', authController.login);
 auth.get("/logout", authController.logout);
 auth.post("/registration", authController.registration)
 
+// Login for role user, not admin
+auth.post("/auth/token", authController.loginToken);
+
 module.exports = auth;

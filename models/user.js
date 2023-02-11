@@ -4,6 +4,8 @@ const {
 } = require('sequelize');
 
 const bcrypt = require('bcrypt');
+const SECRETTOKEN = "BINAR2023WV28";
+const jwt = require("jsonwebtoken");
 
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -39,7 +41,42 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
 
-    checkPassword = (password) => bcrypt.compareSync(password, this.password);
+    static checkPassword = (password, passwordHash) => bcrypt.compareSync(password, passwordHash);
+
+    static generateToken = async () => {
+      const payload = {
+        id : this.id,
+        username : this.email
+      }
+
+      return jwt.sign(payload, SECRETTOKEN);
+    }
+
+    static generateTokenV2 = async ({id, email}) => {
+      const payload = {
+        id : id,
+        username : email
+      }
+
+      return jwt.sign(payload, SECRETTOKEN);
+    }
+
+    static authenticateToken = async ({email, password}) => {
+      try {
+        const user = await this.findOne({
+          where: { email: email }
+        });
+  
+        if (!user) return Promise.reject("User tidak terdaftar!");
+  
+        const isPasswordValid = this.checkPassword(password, user.password);
+        if (!isPasswordValid) return Promise.reject("Password tidak Sesuai!");
+        
+        return Promise.resolve(user);
+      } catch (error) {
+        return Promise.reject(error);
+      }
+    }
   }
   User.init({
     email: DataTypes.STRING,
