@@ -44,6 +44,8 @@ module.exports = {
                 accessToken: await User.generateTokenV2({ id: user.id, email: user.email })
             }
             res.status(200).json(base_response(data, "success", "Login Berhasil!"));
+        }).catch(err => {
+            res.status(401).json(base_response(null, "failed", err));
         })
     }
 }
