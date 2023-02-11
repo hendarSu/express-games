@@ -32,10 +32,10 @@ module.exports = (sequelize, DataTypes) => {
      * @param {fullname, email, password} 
      * @returns 
      */
-    static registration = ({ fullname, email, password }) => {
+    static registration = async ({ email, password }) => {
       const passwordHash = this.#encript(password);
-      return this.create({
-        fullname, email, password : passwordHash
+      return await this.create({
+        email, password : passwordHash, role_id: 2
       })
     }
 
