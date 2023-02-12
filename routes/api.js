@@ -204,7 +204,6 @@ api.post("/v1/fight/:id", checkToken, async (req, res, next) => {
                     let homeWinRoom = false;
 
                     for (const iterator of roomSessionFinish) {
-                        console.log(iterator);
                         if (iterator.status !== "DRAW") {
                             if (iterator.win === room.home) {
                                 home = home + 1;
