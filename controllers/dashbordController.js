@@ -10,9 +10,6 @@ module.exports = {
 
         // buat section untuk query data Room dan join dengan data USER Winner
         const rooms = await Room.findAll({
-            where : {
-              status : "COMPLETED"
-            },
             include : [ 
                 "user"
             ]

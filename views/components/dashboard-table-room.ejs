@@ -10,13 +10,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>CD01</td>
-                    <td>Completed</td>
-                    <td>
-                        HENDAR
-                    </td>
-                </tr>
+                <% for(let i=0; i < rooms.length; i++) { %>
+                    <tr>
+                        <td><%= rooms[i].kode %></td>
+                        <td><%= rooms[i].status %></td>
+                        <td>
+                            <%= (rooms[i].user) ? rooms[i].user.email: "Belum Ada Pemenang" ;  %>
+                        </td>
+                    </tr>
+                <% } %>
             </tbody>
         </table>
     </div>
