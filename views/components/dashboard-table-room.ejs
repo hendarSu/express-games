@@ -10,13 +10,19 @@
                 </tr>
             </thead>
             <tbody>
-                <% for(let i=0; i < rooms.length; i++) { %>
+                <% if (rooms.length > 0) { %>
+                    <% for(let i=0; i < rooms.length; i++) { %>
+                        <tr>
+                            <td><%= rooms[i].kode %></td>
+                            <td><%= rooms[i].status %></td>
+                            <td>
+                                <%= (rooms[i].user) ? rooms[i].user.email: "Belum Ada Pemenang" ;  %>
+                            </td>
+                        </tr>
+                    <% } %>
+                <% } else { %>
                     <tr>
-                        <td><%= rooms[i].kode %></td>
-                        <td><%= rooms[i].status %></td>
-                        <td>
-                            <%= (rooms[i].user) ? rooms[i].user.email: "Belum Ada Pemenang" ;  %>
-                        </td>
+                        <td colspan="3"> Data Tidak Ditemukan!</td>
                     </tr>
                 <% } %>
             </tbody>
