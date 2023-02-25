@@ -1,3 +1,4 @@
+const { completed } = require("../libs/room-status");
 const { User, Room } = require("./../models");
 
 module.exports = {
@@ -7,6 +8,16 @@ module.exports = {
         const countUser = await User.count();
         const countRoom = await Room.count();
 
+        // buat section untuk query data Room dan join dengan data USER Winner
+        const rooms = await Room.findAll({
+            where : {
+              status : "COMPLETED"
+            },
+            include : [ 
+                "user"
+            ]
+        });
+
         res.render(
             "admin", 
             { 
@@ -15,7 +26,8 @@ module.exports = {
                 content : [
                     { title : "USER", count: countUser, grid : 6  },
                     { title : "ROOM", count: countRoom, grid: 6  }
-                  ]
+                  ],
+                rooms: rooms
             });
     }
 }
