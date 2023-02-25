@@ -3,6 +3,9 @@ const api = require("./api");
 const auth = require("./auth");
 const home = require("./home");
 const router = express.Router();
+const swaggerUi = require('./swagger-ui');
+
+router.use('/docs', swaggerUi);
 
 router.get("/", (req, res, next) => {
     res.render("home", { page: { title: "Halaman beranda!" }, user: req.isAuthenticated ? req.user: null })
