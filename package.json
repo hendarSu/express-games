@@ -2,11 +2,10 @@
   "name": "library-expressjs",
   "version": "1.0.0",
   "description": "",
-  "homepage": "./client/public",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon ./server/app.js",
+    "serve": "nodemon ./server/app.js",
     "db:migrate": "sequelize db:migrate",
     "start:client": "react-scripts start",
     "build:client": "react-scripts build",
