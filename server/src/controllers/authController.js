@@ -1,6 +1,6 @@
 const passport = require("passport");
 const base_response = require("../libs/base-response");
-const { User } = require("./../models");
+const { User } = require("../models");
 
 module.exports = {
     index: (req, res, next) => {

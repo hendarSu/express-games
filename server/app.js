@@ -1,11 +1,11 @@
 const express = require("express");
-const router = require("./routes/router");
-
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const flash = require('express-flash');
-const passport = require("./libs/passport");
-const passportJwt = require("./libs/passport-jwt");
+
+const router = require("./src/routes/router");
+const passport = require("./src/libs/passport");
+const passportJwt = require("./src/libs/passport-jwt");
 
 const app = express();
 const port = 3000;
@@ -32,6 +32,7 @@ app.use(passportJwt.initialize());
 
 // view engine setup
 app.set('view engine', 'ejs');
+app.set('views', './server/src/views');
 
 app.use("/", router); // localhost:3000/
 

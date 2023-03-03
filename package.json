@@ -2,11 +2,16 @@
   "name": "library-expressjs",
   "version": "1.0.0",
   "description": "",
+  "homepage": "./client/public",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev": "nodemon app.js",
-    "db:migrate": "sequelize db:migrate"
+    "start:dev": "nodemon ./server/app.js",
+    "db:migrate": "sequelize db:migrate",
+    "start:client": "react-scripts start",
+    "build:client": "react-scripts build",
+    "test:client": "react-scripts test",
+    "eject:client": "react-scripts eject"
   },
   "author": "",
   "license": "ISC",
@@ -28,6 +33,31 @@
     "randomstring": "^1.2.3",
     "sequelize": "^6.28.0",
     "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^4.6.1"
+    "swagger-ui-express": "^4.6.1",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "5.0.1",
+    "web-vitals": "^2.1.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }

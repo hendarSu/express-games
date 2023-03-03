@@ -32,7 +32,7 @@ const options = {
             }
         }
     },
-    apis: ['./routes/*.js'] // lokasi endpoint Anda
+    apis: ['./server/src/routes/*.js'] // lokasi endpoint Anda
 };
 
 const specs = swaggerJsdoc(options);
