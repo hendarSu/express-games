@@ -1,8 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-function Dashboard(props) {
-
+function Dashboard() {
     const [dashbaord, setDashboard] = useState({});
 
     const getDashboard = async (token) => {
@@ -49,7 +48,7 @@ function Dashboard(props) {
                     }
                 </div>
                 <div class="row mt-5">
-                <div class="col-md-12">
+                    <div class="col-md-12">
                         <h3>Table Rooms </h3>
                         <table class="table">
                             <thead>
@@ -78,7 +77,6 @@ function Dashboard(props) {
                             </tbody>
                         </table>
                     </div>
-                    
                 </div>
             </div>
         </>
