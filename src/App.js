@@ -25,7 +25,7 @@ function App() {
     <div>
       {
         user ? (
-          <Dashboard user={user}/>
+          <Dashboard />
         ) : (
           <Login />
         )
