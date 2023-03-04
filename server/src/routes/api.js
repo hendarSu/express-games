@@ -8,7 +8,12 @@ const Sequelize = require("sequelize");
 const randomstring = require("randomstring");
 const { waiting, running, completed, draw } = require("../libs/room-status");
 
+const dashboard = require("./dashboard");
+
 const api = express.Router();
+
+// Endpoint For get Data Dashboard
+api.use("/v1/dashboard", dashboard);
 
 api.post("/v1/create-room", checkToken, async (req, res, next) => {
     const roomInisiate = {
