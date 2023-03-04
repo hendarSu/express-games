@@ -35,6 +35,13 @@ module.exports = {
             res.status(400).json(base_response(null, "failed", error));
         }
     },
+
+    /**
+     * Login for genereate Token JWT
+     * @param {*} req 
+     * @param {*} res 
+     * @param {*} next 
+     */
     loginToken: async (req, res, next) => {
         const { email, password } = req.body;   
         User.authenticateToken({ email, password }).then(async (user) => {
