@@ -22,7 +22,6 @@ function Login() {
       // simpan Token ke local storeage
       localStorage.setItem("user", JSON.stringify(res.data.data))
       window.location.href = "/";
-      
     } catch (error) {
       console.error(error);
     }
